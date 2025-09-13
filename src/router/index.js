@@ -1,6 +1,6 @@
 import { createRouter,createWebHashHistory} from 'vue-router'
 
-import Index from '../pages/frontend/index.vue'
+import Index from '@/pages/frontend/index.vue'
 
 const routes = [
     {
