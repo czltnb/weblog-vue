@@ -1,6 +1,7 @@
 import { createRouter,createWebHashHistory} from 'vue-router'
 
 import Index from '@/pages/frontend/index.vue'
+import Login from '@/pages/admin/login.vue'
 
 const routes = [
     {
@@ -9,9 +10,16 @@ const routes = [
 
         //name: 'Weblog首页'
         meta: {
-            title: 'Weblog首页'
+            title: 'Weblog 首页'
         }
-    }
+    },
+    {
+        path: '/login',
+        component: Login,
+        meta: {
+            title: 'Weblog 登录页'
+        }
+    },
 ]
 
 const router = createRouter({
