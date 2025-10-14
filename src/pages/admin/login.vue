@@ -27,17 +27,17 @@
 
                     <el-form-item>
                       	<!-- 输入框组件 -->
-                        <el-input size="large" placeholder="请输入用户名" :prefix-icon="User" clearable/>
+                        <el-input size="large" v-model="form.username" placeholder="请输入用户名" :prefix-icon="User" clearable/>
                     </el-form-item>
                         
                     <el-form-item>
                          <!-- 密码框组件 -->
-                        <el-input size="large" type="password" placeholder="请输入密码" :prefix-icon="Lock" clearable/>
+                        <el-input size="large" v-model="form.password" type="password" placeholder="请输入密码" :prefix-icon="Lock" clearable/>
                     </el-form-item>
 
                     <el-form-item>
                         	<!-- 登录按钮，宽度设置为 100% -->
-                        <el-button class="w-full" size="large" type="primary">登录</el-button>
+                        <el-button class="w-full" size="large" type="primary" @click="onSubmit">登录</el-button>
                     </el-form-item>
 
                 </el-form>
@@ -49,4 +49,27 @@
 <script setup>
 // 引入 Element Plus 中的用户、锁图标
 import { User, Lock } from '@element-plus/icons-vue'
+import { login } from '@/api/admin/user'
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+//定义响应式表单对象
+const form = reactive({
+    username: '',
+    password: ''
+})
+
+//登录
+const onSubmit = () => {
+    console.log('登录')
+    login(form.username,form.password).then((res) => {
+        console.log(res)
+        if(res.data.success == true){
+            router.push('/admin/index')
+        }
+    })
+}
+
 </script>
