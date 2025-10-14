@@ -52,6 +52,7 @@ import { User, Lock } from '@element-plus/icons-vue'
 import { login } from '@/api/admin/user'
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { showMessage } from '@/composables/util'
 
 const router = useRouter()
 
@@ -98,8 +99,15 @@ const onSubmit = () => {
             console.log(res)
             // 判断是否成功
             if (res.data.success == true) {
+
+                showMessage('登录成功')
+
                 // 跳转到后台首页
                 router.push('/admin/index')
+            } else {
+                let message = res.data.message
+                //提示错误消息弹窗,message错误消息来自后端传回来的res.data.message
+                showMessage(message,'error')
             }
         })
     })
