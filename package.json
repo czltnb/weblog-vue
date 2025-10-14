@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
+    "@vueuse/integrations": "^13.9.0",
     "axios": "^1.12.2",
     "element-plus": "^2.3.9",
     "flowbite": "^1.8.1",
+    "universal-cookie": "^8.0.1",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
