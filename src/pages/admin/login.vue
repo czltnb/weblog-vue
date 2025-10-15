@@ -99,18 +99,18 @@ const onSubmit = () => {
         login(form.username, form.password).then((res) => {
             console.log(res)
             // 判断是否成功
-            if (res.data.success == true) {
+            if (res.success == true) {
 
                 showMessage('登录成功')
 
                 // 存储 Token 到 Cookie 中
-                let token = res.data.data.token
+                let token = res.data.token
                 setToken(token)
 
                 // 跳转到后台首页
                 router.push('/admin/index')
             } else {
-                let message = res.data.message
+                let message = res.message
                 //提示错误消息弹窗,message错误消息来自后端传回来的res.data.message
                 showMessage(message,'error')
             }
